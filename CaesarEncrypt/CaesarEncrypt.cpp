@@ -43,12 +43,6 @@ int main() {
         b.decrypt(s2);
         std::cout << s2 << "\n";
         CaesarEncrypt a(57);
-        std::string s1 = "aAb42cdeпри2f";
-        std::cout << s1 << "\n";
-        a.encrypt(s1);
-        std::cout << s1 << "\n";
-        a.decrypt(s1);
-        std::cout << s1 << "\n";
     } catch (std::invalid_argument e) {
         std::cout << e.what() << std::endl;
     }
