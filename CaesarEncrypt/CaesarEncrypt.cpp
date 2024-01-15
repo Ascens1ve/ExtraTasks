@@ -1,16 +1,18 @@
 #include <iostream>
 
 constexpr int base_shift = 3;
+constexpr int uppercase = static_cast<int>('A');
+constexpr int lowercase = static_cast<int>('a');
 
 class CaesarEncrypt {
     int shift;
     void crypt(std::string& word, bool op) {
+        int direction = op == true ? 1 : -1;
         for (int i = 0; i < word.size(); i++) {
             if (isalpha(word[i])) {
                 int pos = static_cast<int>(word[i]);
-                int power = abs(pos - 97) < abs(pos - 65) ? 97 : 65;
-                if (op == true) word[i] = static_cast<char>((pos + shift) % power + power);
-                else word[i] = static_cast<char>((pos - shift) % power + power);
+                int power = abs(pos - lowercase) < abs(pos - uppercase) ? lowercase : uppercase;
+                word[i] = static_cast<char>((pos + shift * direction) % power + power);
             }
         }
     }
