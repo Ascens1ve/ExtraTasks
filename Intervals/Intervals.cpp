@@ -34,38 +34,38 @@ class Interval {
         void print() const {
             std::cout << "[" << start << ", " << end << "]" << std::endl;
         }
-        Interval& operator * (double x) {
+        Interval operator * (double x) {
             start *= x;
             end *= x;
             return *this;
         }
-        Interval& operator *= (double x) {
+        Interval operator *= (double x) {
             return (*this * x);
         }
         friend Interval operator * (double x, const Interval& i) {
             return Interval(x * i.start, x * i.end);
         }
-        Interval& operator / (double x) {
+        Interval operator / (double x) {
             return (*this * (1/x));
         }
-        Interval& operator /= (double x) {
+        Interval operator /= (double x) {
             return (*this / x);
         }
-        Interval& operator + (double x) {
+        Interval operator + (double x) {
             start += x;
             end += x;
             return *this;
         }
-        Interval& operator += (double x) {
+        Interval operator += (double x) {
             return (*this + x);
         }
         friend Interval operator + (double x, Interval& i) {
             return Interval(x + i.start, x + i.end);
         }
-        Interval& operator - (double x) {
+        Interval operator - (double x) {
             return (*this + (-x));
         }
-        Interval& operator -= (double x) {
+        Interval operator -= (double x) {
             return (*this - x);
         }
 };
